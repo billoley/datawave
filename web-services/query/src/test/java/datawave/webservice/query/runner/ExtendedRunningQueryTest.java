@@ -1,6 +1,8 @@
 package datawave.webservice.query.runner;
 
 import com.google.common.collect.Lists;
+import datawave.microservice.querymetric.BaseQueryMetric;
+import datawave.microservice.querymetric.QueryMetricFactoryImpl;
 import datawave.security.authorization.DatawavePrincipal;
 import datawave.security.authorization.DatawaveUser;
 import datawave.security.authorization.DatawaveUser.UserType;
@@ -9,11 +11,10 @@ import datawave.security.util.DnUtils.NpeUtils;
 import datawave.webservice.common.connection.AccumuloConnectionFactory;
 import datawave.webservice.common.connection.AccumuloConnectionFactory.Priority;
 import datawave.webservice.query.Query;
-import datawave.webservice.query.cache.QueryMetricFactoryImpl;
 import datawave.webservice.query.cache.ResultsPage;
 import datawave.webservice.query.configuration.GenericQueryConfiguration;
 import datawave.webservice.query.logic.QueryLogic;
-import datawave.webservice.query.metric.QueryMetric;
+import datawave.microservice.querymetric.QueryMetric;
 import datawave.webservice.query.metric.QueryMetricsBean;
 import datawave.webservice.query.util.QueryUncaughtExceptionHandler;
 import org.apache.accumulo.core.client.Connector;
@@ -59,6 +60,9 @@ public class ExtendedRunningQueryTest {
     
     @Mock
     Query query;
+    
+    @Mock
+    QueryMetric queryMetric;
     
     @Mock
     QueryUncaughtExceptionHandler exceptionHandler;
@@ -143,7 +147,8 @@ public class ExtendedRunningQueryTest {
         
         // Set expectations
         expect(this.queryLogic.getCollectQueryMetrics()).andReturn(true);
-        this.query.populateMetric(isA(QueryMetric.class));
+        // this.query.populateMetric(isA(QueryMetric.class));
+        queryMetric.populate(this.query);
         expect(this.query.getUncaughtExceptionHandler()).andReturn(exceptionHandler).times(5);
         expect(this.exceptionHandler.getThrowable()).andReturn(null).times(5);
         expect(this.query.getId()).andReturn(queryId).times(3);
@@ -226,7 +231,7 @@ public class ExtendedRunningQueryTest {
         
         // Set expectations
         expect(this.queryLogic.getCollectQueryMetrics()).andReturn(true);
-        this.query.populateMetric(isA(QueryMetric.class));
+        // this.query.populateMetric(isA(QueryMetric.class));
         expect(this.query.getUncaughtExceptionHandler()).andReturn(exceptionHandler).times(7);
         expect(this.exceptionHandler.getThrowable()).andReturn(null).times(7);
         expect(this.query.getId()).andReturn(queryId).times(3);
@@ -298,7 +303,7 @@ public class ExtendedRunningQueryTest {
         
         // Set expectations
         expect(this.queryLogic.getCollectQueryMetrics()).andReturn(true);
-        this.query.populateMetric(isA(QueryMetric.class));
+        // this.query.populateMetric(isA(QueryMetric.class));
         expect(this.query.getUncaughtExceptionHandler()).andReturn(exceptionHandler).times(3);
         expect(this.exceptionHandler.getThrowable()).andReturn(null).times(3);
         expect(this.query.getId()).andReturn(queryId).times(2);
@@ -347,7 +352,7 @@ public class ExtendedRunningQueryTest {
         // Set expectations
         expect(this.transformIterator.getTransformer()).andReturn(transformer);
         expect(this.queryLogic.getCollectQueryMetrics()).andReturn(true);
-        this.query.populateMetric(isA(QueryMetric.class));
+        // this.query.populateMetric(isA(QueryMetric.class));
         expect(this.query.getUncaughtExceptionHandler()).andReturn(exceptionHandler);
         expect(this.exceptionHandler.getThrowable()).andReturn(null);
         expect(this.query.getId()).andReturn(queryId).times(2);
@@ -404,7 +409,7 @@ public class ExtendedRunningQueryTest {
         
         // Set expectations
         expect(this.queryLogic.getCollectQueryMetrics()).andReturn(true);
-        this.query.populateMetric(isA(QueryMetric.class));
+        // this.query.populateMetric(isA(QueryMetric.class));
         expect(this.query.getUncaughtExceptionHandler()).andReturn(exceptionHandler).times(5);
         expect(this.exceptionHandler.getThrowable()).andReturn(null).times(5);
         expect(this.query.getId()).andReturn(queryId).times(3);

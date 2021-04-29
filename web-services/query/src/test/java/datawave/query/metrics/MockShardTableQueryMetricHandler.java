@@ -4,12 +4,12 @@ import java.util.Date;
 import java.util.Map;
 
 import datawave.security.authorization.DatawavePrincipal;
-import datawave.webservice.query.metric.BaseQueryMetric;
-import datawave.webservice.query.metric.QueryMetric;
+import datawave.microservice.querymetric.BaseQueryMetric;
+import datawave.microservice.querymetric.QueryMetric;
 import datawave.webservice.query.metric.QueryMetricHandler;
-import datawave.webservice.query.metric.QueryMetricListResponse;
-import datawave.webservice.query.metric.QueryMetricsSummaryHtmlResponse;
-import datawave.webservice.query.metric.QueryMetricsSummaryResponse;
+import datawave.microservice.querymetric.QueryMetricListResponse;
+import datawave.microservice.querymetric.QueryMetricsSummaryHtmlResponse;
+import datawave.microservice.querymetric.QueryMetricsSummaryResponse;
 
 import javax.inject.Singleton;
 

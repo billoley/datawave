@@ -3,6 +3,10 @@ package datawave.webservice.query.metric;
 import java.util.Date;
 import java.util.Map;
 
+import datawave.microservice.querymetric.BaseQueryMetric;
+import datawave.microservice.querymetric.BaseQueryMetricListResponse;
+import datawave.microservice.querymetric.QueryMetricsSummaryHtmlResponse;
+import datawave.microservice.querymetric.QueryMetricsSummaryResponse;
 import datawave.security.authorization.DatawavePrincipal;
 
 public interface QueryMetricHandler<T extends BaseQueryMetric> {

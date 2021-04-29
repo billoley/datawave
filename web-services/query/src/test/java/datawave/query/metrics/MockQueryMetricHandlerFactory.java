@@ -1,6 +1,6 @@
 package datawave.query.metrics;
 
-import datawave.webservice.query.metric.QueryMetric;
+import datawave.microservice.querymetric.QueryMetric;
 import datawave.webservice.query.metric.QueryMetricHandler;
 
 /**

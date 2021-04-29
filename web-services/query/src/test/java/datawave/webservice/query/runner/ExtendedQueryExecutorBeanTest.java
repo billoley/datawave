@@ -4,6 +4,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import datawave.marking.ColumnVisibilitySecurityMarking;
 import datawave.marking.SecurityMarking;
+import datawave.microservice.querymetric.QueryMetricFactory;
+import datawave.microservice.querymetric.QueryMetricFactoryImpl;
 import datawave.query.data.UUIDType;
 import datawave.security.authorization.DatawavePrincipal;
 import datawave.security.authorization.DatawaveUser;
@@ -25,8 +27,6 @@ import datawave.webservice.query.cache.ClosedQueryCache;
 import datawave.webservice.query.cache.CreatedQueryLogicCacheBean;
 import datawave.webservice.query.cache.QueryCache;
 import datawave.webservice.query.cache.QueryExpirationConfiguration;
-import datawave.webservice.query.cache.QueryMetricFactory;
-import datawave.webservice.query.cache.QueryMetricFactoryImpl;
 import datawave.webservice.query.cache.QueryTraceCache;
 import datawave.webservice.query.cache.QueryTraceCache.CacheListener;
 import datawave.webservice.query.cache.QueryTraceCache.PatternWrapper;
@@ -44,7 +44,7 @@ import datawave.webservice.query.logic.QueryLogicFactory;
 import datawave.webservice.query.logic.QueryLogicFactoryImpl;
 import datawave.webservice.query.logic.QueryLogicTransformer;
 import datawave.webservice.query.logic.RoleManager;
-import datawave.webservice.query.metric.QueryMetric;
+import datawave.microservice.querymetric.QueryMetric;
 import datawave.webservice.query.metric.QueryMetricsBean;
 import datawave.webservice.query.result.event.ResponseObjectFactory;
 import datawave.webservice.query.util.GetUUIDCriteria;
@@ -366,7 +366,7 @@ public class ExtendedQueryExecutorBeanTest {
         expect(this.connectionRequestBean.adminCancelConnectionRequest(queryId.toString())).andReturn(false);
         expect(this.qlCache.poll(queryId.toString())).andReturn(null);
         expect(this.cache.get(queryId.toString())).andReturn(null);
-        this.query.populateMetric(isA(QueryMetric.class));
+        // this.query.populateMetric(isA(QueryMetric.class));
         expect(this.persister.adminFindById(queryId.toString())).andReturn(Lists.newArrayList(query));
         expect(this.query.getQueryAuthorizations()).andReturn("AUTH_1,AUTH_2").anyTimes();
         expect(this.query.getQueryLogicName()).andReturn("ql1").anyTimes();
@@ -745,7 +745,7 @@ public class ExtendedQueryExecutorBeanTest {
         
         // Set expectations of the create logic
         queryLogic1.validate(queryParameters);
-        this.query.populateMetric(isA(QueryMetric.class));
+        // this.query.populateMetric(isA(QueryMetric.class));
         expect(this.queryLogicFactory.getQueryLogic(queryLogicName, this.principal)).andReturn((QueryLogic) this.queryLogic1);
         expect(this.queryLogic1.getMaxPageSize()).andReturn(1000).times(2);
         expect(this.context.getCallerPrincipal()).andReturn(this.principal).anyTimes();
@@ -922,7 +922,7 @@ public class ExtendedQueryExecutorBeanTest {
         
         // Set expectations of the create logic
         queryLogic1.validate(queryParameters);
-        this.query.populateMetric(isA(QueryMetric.class));
+        // this.query.populateMetric(isA(QueryMetric.class));
         expect(this.queryLogicFactory.getQueryLogic(queryLogicName, this.principal)).andReturn((QueryLogic) this.queryLogic1);
         expect(this.queryLogic1.getMaxPageSize()).andReturn(1000).times(2);
         expect(this.context.getCallerPrincipal()).andReturn(this.principal).anyTimes();
@@ -1212,7 +1212,7 @@ public class ExtendedQueryExecutorBeanTest {
         
         // Set expectations of the create logic
         queryLogic1.validate(queryParameters);
-        this.query.populateMetric(isA(QueryMetric.class));
+        // this.query.populateMetric(isA(QueryMetric.class));
         expect(this.queryLogicFactory.getQueryLogic(queryLogicName, this.principal)).andReturn((QueryLogic) this.queryLogic1);
         expect(this.queryLogic1.getMaxPageSize()).andReturn(1000).times(2);
         expect(this.queryLogic1.getConnPoolName()).andReturn("connPool1");
@@ -2265,7 +2265,7 @@ public class ExtendedQueryExecutorBeanTest {
         
         // Set expectations
         expect(this.context.getCallerPrincipal()).andReturn(this.principal);
-        this.query.populateMetric(isA(QueryMetric.class));
+        // this.query.populateMetric(isA(QueryMetric.class));
         expect(this.principal.getName()).andReturn(userName);
         expect(this.principal.getShortName()).andReturn(sid);
         expect(this.principal.getPrimaryUser()).andReturn(dwUser);
@@ -2793,7 +2793,7 @@ public class ExtendedQueryExecutorBeanTest {
         expect(this.query.getColumnVisibility()).andReturn(authorization);
         expect(this.queryLogic1.getSelectors(this.query)).andReturn(null);
         expect(this.auditor.audit(map)).andReturn(null);
-        this.query.populateMetric(anyObject(QueryMetric.class));
+        // this.query.populateMetric(anyObject(QueryMetric.class));
         //
         // Advice from a test-driven development perspective...
         //
@@ -3688,7 +3688,7 @@ public class ExtendedQueryExecutorBeanTest {
         expect(this.query.getUserDN()).andReturn(userDN).anyTimes();
         expect(this.query.toMap()).andReturn(map);
         expect(this.query.getColumnVisibility()).andReturn(authorization);
-        this.query.populateMetric(anyObject(QueryMetric.class));
+        // this.query.populateMetric(anyObject(QueryMetric.class));
         expect(this.queryLogic1.getSelectors(this.query)).andReturn(new ArrayList<>());
         expect(this.auditor.audit(map)).andReturn(null);
         expectLastCall().andThrow(new Exception("EXPECTED EXCEPTION IN AUDIT"));

@@ -4,12 +4,12 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-import datawave.webservice.query.metric.BaseQueryMetric;
-import datawave.webservice.query.metric.BaseQueryMetric.PageMetric;
+import datawave.microservice.querymetric.BaseQueryMetric;
+import datawave.microservice.querymetric.BaseQueryMetric.PageMetric;
 import datawave.webservice.query.metric.QueryMetricHandler;
-import datawave.webservice.query.metric.QueryMetricSummary;
-import datawave.webservice.query.metric.QueryMetricsSummaryHtmlResponse;
-import datawave.webservice.query.metric.QueryMetricsSummaryResponse;
+import datawave.microservice.querymetric.QueryMetricSummary;
+import datawave.microservice.querymetric.QueryMetricsSummaryHtmlResponse;
+import datawave.microservice.querymetric.QueryMetricsSummaryResponse;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.apache.log4j.Logger;
