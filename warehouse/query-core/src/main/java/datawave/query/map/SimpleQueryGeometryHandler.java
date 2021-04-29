@@ -5,7 +5,6 @@ import datawave.query.jexl.JexlASTHelper;
 import datawave.query.jexl.visitors.GeoFeatureVisitor;
 import datawave.query.language.parser.ParseException;
 import datawave.query.language.parser.jexl.LuceneToJexlQueryParser;
-import datawave.query.metrics.ShardTableQueryMetricHandler;
 import datawave.webservice.common.logging.ThreadConfigurableLogger;
 import datawave.webservice.query.QueryImpl;
 import datawave.webservice.query.map.QueryGeometry;
@@ -32,7 +31,7 @@ import static datawave.query.QueryParameters.QUERY_SYNTAX;
 @ApplicationScoped
 @Exclude(ifProjectStage = DatawaveEmbeddedProjectStageHolder.DatawaveEmbedded.class)
 public class SimpleQueryGeometryHandler implements QueryGeometryHandler {
-    private static final Logger log = ThreadConfigurableLogger.getLogger(ShardTableQueryMetricHandler.class);
+    private static final Logger log = ThreadConfigurableLogger.getLogger(SimpleQueryGeometryHandler.class);
     
     private static final String LUCENE = "LUCENE";
     private static final String JEXL = "JEXL";

@@ -46,7 +46,6 @@ public class HudBean {
     
     private Gson gson = new Gson();
     private HudQuerySummaryBuilder summaryBuilder = new HudQuerySummaryBuilder();
-    private HudMetricSummaryBuilder metricSummaryBuilder = new HudMetricSummaryBuilder();
     
     @Inject
     private QueryExecutorBean queryExecutor;
@@ -115,24 +114,6 @@ public class HudBean {
         }
         
         throw new IllegalArgumentException("Principal must be of the correct type");
-    }
-    
-    @Path("/summaryall")
-    @GET
-    public String getSummaryQueryStats() throws Exception {
-        QueryMetricsSummaryResponse summaryResp = queryMetrics.getTotalQueriesSummary(null, null);
-        QueryMetricSummary hour1 = summaryResp.getHour1();
-        QueryMetricSummary hour6 = summaryResp.getHour6();
-        QueryMetricSummary hour12 = summaryResp.getHour12();
-        QueryMetricSummary day1 = summaryResp.getDay1();
-        
-        List<HudMetricSummary> metricSummaryList = new ArrayList<>();
-        metricSummaryList.add(metricSummaryBuilder.buildMetricsSummary(1L, hour1));
-        metricSummaryList.add(metricSummaryBuilder.buildMetricsSummary(6L, hour6));
-        metricSummaryList.add(metricSummaryBuilder.buildMetricsSummary(12L, hour12));
-        metricSummaryList.add(metricSummaryBuilder.buildMetricsSummary(24L, day1));
-        
-        return gson.toJson(metricSummaryList);
     }
     
     @Path("/activeusers")

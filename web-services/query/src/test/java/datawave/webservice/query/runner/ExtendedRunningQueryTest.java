@@ -147,7 +147,6 @@ public class ExtendedRunningQueryTest {
         
         // Set expectations
         expect(this.queryLogic.getCollectQueryMetrics()).andReturn(true);
-        // this.query.populateMetric(isA(QueryMetric.class));
         queryMetric.populate(this.query);
         expect(this.query.getUncaughtExceptionHandler()).andReturn(exceptionHandler).times(5);
         expect(this.exceptionHandler.getThrowable()).andReturn(null).times(5);
@@ -231,7 +230,7 @@ public class ExtendedRunningQueryTest {
         
         // Set expectations
         expect(this.queryLogic.getCollectQueryMetrics()).andReturn(true);
-        // this.query.populateMetric(isA(QueryMetric.class));
+        queryMetric.populate(this.query);
         expect(this.query.getUncaughtExceptionHandler()).andReturn(exceptionHandler).times(7);
         expect(this.exceptionHandler.getThrowable()).andReturn(null).times(7);
         expect(this.query.getId()).andReturn(queryId).times(3);
@@ -303,7 +302,7 @@ public class ExtendedRunningQueryTest {
         
         // Set expectations
         expect(this.queryLogic.getCollectQueryMetrics()).andReturn(true);
-        // this.query.populateMetric(isA(QueryMetric.class));
+        queryMetric.populate(this.query);
         expect(this.query.getUncaughtExceptionHandler()).andReturn(exceptionHandler).times(3);
         expect(this.exceptionHandler.getThrowable()).andReturn(null).times(3);
         expect(this.query.getId()).andReturn(queryId).times(2);
@@ -352,7 +351,7 @@ public class ExtendedRunningQueryTest {
         // Set expectations
         expect(this.transformIterator.getTransformer()).andReturn(transformer);
         expect(this.queryLogic.getCollectQueryMetrics()).andReturn(true);
-        // this.query.populateMetric(isA(QueryMetric.class));
+        queryMetric.populate(this.query);
         expect(this.query.getUncaughtExceptionHandler()).andReturn(exceptionHandler);
         expect(this.exceptionHandler.getThrowable()).andReturn(null);
         expect(this.query.getId()).andReturn(queryId).times(2);
@@ -409,7 +408,7 @@ public class ExtendedRunningQueryTest {
         
         // Set expectations
         expect(this.queryLogic.getCollectQueryMetrics()).andReturn(true);
-        // this.query.populateMetric(isA(QueryMetric.class));
+        queryMetric.populate(this.query);
         expect(this.query.getUncaughtExceptionHandler()).andReturn(exceptionHandler).times(5);
         expect(this.exceptionHandler.getThrowable()).andReturn(null).times(5);
         expect(this.query.getId()).andReturn(queryId).times(3);

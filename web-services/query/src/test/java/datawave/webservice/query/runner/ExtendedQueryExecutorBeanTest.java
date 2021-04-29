@@ -2284,6 +2284,7 @@ public class ExtendedQueryExecutorBeanTest {
         expect(this.query.getQuery()).andReturn(queryName).anyTimes();
         expect(this.query.getBeginDate()).andReturn(null).anyTimes();
         expect(this.query.getEndDate()).andReturn(null).anyTimes();
+        expect(this.query.getColumnVisibility()).andReturn(null).anyTimes();
         expect(this.cache.containsKey(queryId.toString())).andReturn(false);
         expect(this.query.getQueryName()).andReturn(null).anyTimes();
         expect(this.query.getPagesize()).andReturn(0).anyTimes();
