@@ -76,9 +76,9 @@ public class WiredQueryExecutorBeanTest {
                                         DefaultQueryPlanner.class, BooleanChunkingQueryPlanner.class, ShardQueryLogic.class, CountingShardQueryLogic.class,
                                         EventQueryDataDecoratorTransformer.class, FieldIndexCountQueryLogic.class, CompositeQueryLogic.class,
                                         QueryMetricQueryLogic.class, TLDQueryLogic.class, ParentQueryLogic.class, DiscoveryLogic.class, IndexQueryLogic.class,
-                                        QueryLogicFactoryImpl.class, DatawaveRoleManager.class, EasyRoleManager.class,
-                                        CachedResultsConfiguration.class, DateIndexHelperFactory.class, EdgeDictionaryResponseTypeProducer.class,
-                                        RemoteEdgeDictionary.class, DefaultMapperDecorator.class).addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+                                        QueryLogicFactoryImpl.class, DatawaveRoleManager.class, EasyRoleManager.class, CachedResultsConfiguration.class,
+                                        DateIndexHelperFactory.class, EdgeDictionaryResponseTypeProducer.class, RemoteEdgeDictionary.class,
+                                        DefaultMapperDecorator.class).addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
     
     @Test

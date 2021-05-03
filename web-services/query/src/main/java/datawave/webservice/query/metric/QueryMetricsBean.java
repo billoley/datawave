@@ -1,6 +1,5 @@
 package datawave.webservice.query.metric;
 
-import datawave.annotation.DateFormat;
 import datawave.annotation.Required;
 import datawave.configuration.DatawaveEmbeddedProjectStageHolder;
 import datawave.interceptor.RequiredInterceptor;
@@ -8,15 +7,9 @@ import datawave.interceptor.ResponseInterceptor;
 import datawave.metrics.remote.RemoteQueryMetricService;
 import datawave.microservice.querymetric.BaseQueryMetric;
 import datawave.microservice.querymetric.BaseQueryMetricListResponse;
-import datawave.microservice.querymetric.QueryMetricsSummaryHtmlResponse;
-import datawave.microservice.querymetric.QueryMetricsSummaryResponse;
 import datawave.security.authorization.DatawavePrincipal;
-import datawave.webservice.common.connection.AccumuloConnectionFactory;
-import datawave.webservice.query.map.QueryGeometryHandler;
 import datawave.webservice.query.map.QueryGeometryResponse;
 import datawave.microservice.querymetric.BaseQueryMetric.PageMetric;
-import org.apache.commons.lang.time.DateUtils;
-import org.apache.deltaspike.core.api.config.ConfigProperty;
 import org.apache.deltaspike.core.api.exclude.Exclude;
 import org.apache.log4j.Logger;
 import org.jboss.resteasy.annotations.GZIP;
@@ -41,9 +34,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import java.security.Principal;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 

@@ -1244,6 +1244,7 @@ public class ExtendedQueryExecutorBeanTest {
         expect(this.query.getEndDate()).andReturn(null).anyTimes();
         expect(this.query.getQueryAuthorizations()).andReturn(queryAuthorizations).anyTimes();
         expect(this.query.getQueryName()).andReturn(null).anyTimes();
+        expect(this.query.getColumnVisibility()).andReturn(null).anyTimes();
         expect(this.query.getPagesize()).andReturn(0).anyTimes();
         expect(this.query.getPageTimeout()).andReturn(-1).anyTimes();
         expect(this.query.getExpirationDate()).andReturn(null).anyTimes();
@@ -1311,6 +1312,7 @@ public class ExtendedQueryExecutorBeanTest {
         expect(this.qlCache.pollIfOwnedBy(queryId.toString(), userSid)).andReturn(null);
         expect(this.cache.get(queryId.toString())).andReturn(this.runningQuery);
         expect(this.connectionFactory.getConnection("connPool1", Priority.NORMAL, null)).andReturn(this.connector);
+        
         this.runningQuery.closeConnection(this.connectionFactory);
         this.cache.remove(queryId.toString());
         this.closedCache.add(queryId.toString());
@@ -2792,6 +2794,11 @@ public class ExtendedQueryExecutorBeanTest {
         expect(this.queryLogic1.getMaxResults()).andReturn(-1L);
         expect(this.query.toMap()).andReturn(map);
         expect(this.query.getColumnVisibility()).andReturn(authorization);
+        expect(this.query.getBeginDate()).andReturn(null);
+        expect(this.query.getEndDate()).andReturn(null);
+        expect(this.query.getQueryName()).andReturn(queryName);
+        expect(this.query.getParameters()).andReturn((Set) Collections.emptySet());
+        expect(this.query.getColumnVisibility()).andReturn(null);
         expect(this.queryLogic1.getSelectors(this.query)).andReturn(null);
         expect(this.auditor.audit(map)).andReturn(null);
         // this.query.populateMetric(anyObject(QueryMetric.class));
